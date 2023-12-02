@@ -1,5 +1,27 @@
 .parties {
 
+  .top-search {
+    margin-right: 10px;
+
+    .nb-form-field-addon-basic {
+      color: var(--dark-highlight);
+    }
+
+    .nb-form-field-addon-basic-highlight {
+      color: var(--dark-highlight);
+    }
+
+    [nbInput].status-basic {
+      background-color: var(--blush);
+      border-color: var(--sidebar-background);
+      color: var(--dark-highlight);
+    }
+
+    [nbInput].status-basic::placeholder {
+      color: var(--dark-highlight);
+    }
+  }
+
   .dashboard-table-header {
 
     .header {
@@ -69,24 +91,85 @@
           letter-spacing: 0.02em;
           color: var(--font-color);
         }
-
-        .field-column4 {
-          width: 20%;
-
-          .edit-button {
-            .edit-text {
-              line-height: 15px;
-              letter-spacing: 0.02em;
-              color: var(--font-color);
-              margin-left: 10px;
-            }
-          }
-        }
       }
     }
 
     .table-row {
       margin-top: 10px;
+    }
+  }
+}
+
+.new-party {
+  height: 100%;
+
+  .title {
+    margin-top: 20px;
+    color: var(--dark-highlight);
+
+    nb-icon {
+      margin-right: 10px;
+      color: var(--dark-highlight);
+      font-size: 1.6rem;
+    }
+
+    .title-text {
+      margin-top: 4px;
+    }
+  }
+
+  .party-form {
+    margin-top: 50px;
+    margin-left: 20px;
+
+    .party-fields {
+      margin-top: 30px;
+
+      div {
+        margin-bottom: 5px;
+      }
+
+      .nb-form-field-addon-basic {
+        color: var(--dark-highlight);
+      }
+
+      .nb-form-field-addon-basic-highlight {
+        color: var(--dark-highlight);
+      }
+
+      [nbInput].status-basic {
+        background-color: var(--blush)!important;
+        border-color: var(--sidebar-background);
+        color: var(--dark-highlight);
+      }
+
+      [nbInput].status-basic::placeholder {
+        color: var(--dark-highlight);
+      }
+
+      [nbInput].input-full-width {
+        width: 50%;
+      }
+    }
+  }
+
+  .party-footer {
+    .buttons {
+      margin-top: 50px;
+
+      button {
+        margin-right: 20px;
+      }
+
+      [nbButton].appearance-outline.status-basic, .appearance-outline.status-basic[nbButtonToggle] {
+        border: 1.5px solid var(--sidebar-background);
+        color: var(--dark-highlight);
+      }
+
+      [nbButton].appearance-filled.status-basic, .appearance-filled.status-basic[nbButtonToggle] {
+        background-color: var(--complimentary-green);
+        color: var(--header-background);
+      }
     }
   }
 }

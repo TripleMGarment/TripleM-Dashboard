@@ -1,6 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {NbButtonModule, NbCardModule, NbIconModule, NbMenuModule, NbSidebarModule, NbUserModule} from "@nebular/theme";
+import {
+  NbButtonModule,
+  NbCardModule, NbFormFieldModule,
+  NbIconModule,
+  NbInputModule,
+  NbMenuModule,
+  NbSidebarModule,
+  NbUserModule
+} from "@nebular/theme";
 import {NbEvaIconsModule} from "@nebular/eva-icons";
 
 const modules = [
@@ -9,7 +17,9 @@ const modules = [
   NbUserModule,
   NbMenuModule,
   NbCardModule,
-  NbIconModule
+  NbIconModule,
+  NbInputModule,
+  NbFormFieldModule
 ];
 
 @NgModule({

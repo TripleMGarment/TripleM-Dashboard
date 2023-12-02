@@ -1,0 +1,34 @@
+<div class="new-party flex flex-col">
+  <div class="flex title text-lg fw-600">
+    <nb-icon icon="people"></nb-icon>
+    <div class="title-text">Add Party</div>
+  </div>
+  <div class="flex flex-col party-form width">
+    <form class="width" [formGroup]="newPartyForm">
+      <div class="party-fields">
+        <div class="fw-600">Party Name</div>
+        <nb-form-field class="width">
+          <nb-icon nbPrefix icon="person-add-outline" pack="eva"></nb-icon>
+          <input type="text" fieldSize="giant" fullWidth nbInput placeholder="Party Name" formControlName="partnerName">
+        </nb-form-field>
+      </div>
+      <div class="party-fields">
+        <div class="fw-600">Address</div>
+        <nb-form-field class="width">
+          <nb-icon nbPrefix icon="map-outline" pack="eva"></nb-icon>
+          <input type="text" fieldSize="giant" fullWidth nbInput placeholder="Address" formControlName="partnerAddress">
+        </nb-form-field>
+      </div>
+      <div class="party-fields">
+        <div class="fw-600">GST Number</div>
+        <input type="text" fieldSize="giant" fullWidth nbInput placeholder="GST Number" class="width" formControlName="partnerGst">
+      </div>
+    </form>
+  </div>
+  <div class="party-footer flex flex-col justify-end align-items-end relative">
+    <div class="buttons">
+      <button nbButton status="basic" outline class="transform-none text-base" [routerLink]="'/parties'"><nb-icon icon="arrow-back"></nb-icon>Back To List</button>
+      <button nbButton status="basic" class="transform-none text-base">Create</button>
+    </div>
+  </div>
+</div>
