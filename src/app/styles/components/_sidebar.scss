@@ -1,0 +1,35 @@
+.sidebar {
+  background-color: var(--sidebar-background);
+
+  .sidebar-user {
+    margin-bottom: 10px;
+
+    .nb-user .initials,.info-container .user-name,.user-title {
+      color: var(--dark-highlight);
+      font-weight: 600;
+      line-height: 1.1rem;
+      letter-spacing: 0.05rem;
+    }
+  }
+
+  .main-container .scrollable nb-menu .menu-items li a {
+    text-decoration: none;
+    color: var(--dark-highlight);
+    font-size: 0.95rem;
+  }
+
+  .main-container .scrollable nb-menu .menu-items li a .menu-icon {
+    color: var(--dark-highlight);
+    font-size: 1.4rem;
+  }
+
+  .main-container .scrollable nb-menu .menu-items li a:hover {
+    color: var(--complimentary-green);
+    font-size: 1rem;
+
+    .menu-icon {
+      color: var(--complimentary-green);
+      font-size: 1.6rem;
+    }
+  }
+}

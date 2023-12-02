@@ -1,0 +1,121 @@
+.flex {
+  display: flex;
+}
+.block {
+  display: block;
+}
+overflow-hidden {
+  overflow: hidden;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.border-radius-100 {
+  border-radius: 100%;
+}
+
+.border-radius-50 {
+  border-radius: 50%;
+}
+
+.border-radius-input {
+  border-radius: 6px;
+}
+
+.border-radius-input-file {
+  border-radius: 8px;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.align-items-end {
+  align-items: flex-end;
+}
+
+.align-item-center {
+  align-items: center;
+}
+
+.width {
+  width: 100%;
+}
+
+.width-50 {
+  width: 50%;
+}
+
+.width-49 {
+  width: 49%;
+}
+
+.scroll-y {
+  overflow-y: scroll;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+.text {
+  cursor: text;
+}
+
+.cursor-unset {
+  cursor: unset;
+}
+
+.box-shadow-none {
+  box-shadow: none;
+}
+
+.box-shadow-card {
+  box-shadow: 0px 2.96296px 22.2222px rgba(0, 0, 0, 0.06);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.rotate90 {
+  transform: rotate(-90deg);
+}
+
+.font-color {
+  color: var(--font-color);
+}
+
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}

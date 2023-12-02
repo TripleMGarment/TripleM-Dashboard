@@ -1,0 +1,28 @@
+.navbar {
+  background-color: var(--header-background);
+
+  .navbar-logo {
+    img {
+      height: 40px;
+      margin-top: 4px;
+    }
+
+    .navbar-logo-description {
+      margin-left: 10px;
+    }
+  }
+
+  .navbar-info {
+
+    .nb-user .initials{
+      color: var(--complimentary-green);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .nb-user .user-picture {
+      border-color: var(--complimentary-green);
+      border-width: revert;
+    }
+  }
+}

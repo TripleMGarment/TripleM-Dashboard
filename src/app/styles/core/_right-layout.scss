@@ -1,0 +1,17 @@
+.main-layout {
+  background-color: var(--blush);
+
+  .height {
+    height: 87.5vh;
+  }
+
+  nb-card {
+    background-color: var(--header-background);
+    border-color: var(--header-background);
+    border-radius: 0.9rem;
+  }
+}
+
+nb-layout .layout .layout-container .content .columns nb-layout-column {
+  padding: 1.5rem 1.5rem 0;
+}

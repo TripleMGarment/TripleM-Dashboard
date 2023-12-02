@@ -1,9 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {NbSidebarModule} from "@nebular/theme";
+import {NbButtonModule, NbCardModule, NbIconModule, NbMenuModule, NbSidebarModule, NbUserModule} from "@nebular/theme";
+import {NbEvaIconsModule} from "@nebular/eva-icons";
 
 const modules = [
-  NbSidebarModule
+  NbSidebarModule,
+  NbButtonModule,
+  NbUserModule,
+  NbMenuModule,
+  NbCardModule,
+  NbIconModule
 ];
 
 @NgModule({
@@ -11,6 +17,8 @@ const modules = [
   imports: [
     CommonModule,
     NbSidebarModule.forRoot(),
+    NbMenuModule.forRoot(),
+    NbEvaIconsModule
   ],
   exports: [...modules],
 })
