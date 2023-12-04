@@ -59,6 +59,7 @@
         margin-top: 10px;
         border: 1px solid var(--blush);
         background-color: var(--white);
+        color: var(--dark-highlight);
 
         .field-column1 {
           width: 35%;
@@ -89,7 +90,6 @@
           width: 32%;
           line-height: 15px;
           letter-spacing: 0.02em;
-          color: var(--font-color);
         }
       }
     }

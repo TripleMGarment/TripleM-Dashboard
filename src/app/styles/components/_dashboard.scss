@@ -1,0 +1,146 @@
+.dashboard {
+  padding-top: 10px;
+
+  .dashboard-top {
+    margin-top: 10px;
+
+    .title-top {
+      letter-spacing: 0.07rem;
+      line-height: 2rem;
+      color: var(--dark-highlight);
+    }
+
+    .cards-top {
+      height: 170px;
+      margin-top: 40px;
+      margin-left: 20px;
+
+      .card-container {
+        width: 30%;
+      }
+
+      .card {
+        width: 50%;
+        height: 100%;
+        background-color: var(--blush);
+
+        .card-title {
+          color: var(--dark-highlight);
+          height: 48%;
+        }
+
+        .card-value {
+          color: var(--dark-highlight);
+          height: 48%;
+        }
+
+        .card-footer {
+          margin-left: -1.5rem;
+          color: var(--complimentary-green);
+          background: rgba(0,0,0,0.1);
+          border-radius: 0 0 0.9rem 0.9rem;
+        }
+      }
+    }
+  }
+
+  .dashboard-bottom {
+    margin-top: 40px;
+
+    .title-bottom {
+      letter-spacing: 0.07rem;
+      line-height: 2rem;
+      color: var(--dark-highlight);
+    }
+
+    .table-bottom {
+      .dashboard-table-header {
+
+        .header {
+          width: 97%;
+          padding: 10px;
+          background: var(--blush);
+          border: 1px solid var(--blush);
+          margin-top: 30px;
+          line-height: 20px;
+          letter-spacing: 0.01em;
+          color: var(--dark-highlight);
+
+          .header-column1 {
+            width: 30%;
+          }
+
+          .header-column2 {
+            width: 23%;
+          }
+
+          .header-column3 {
+            width: 22%;
+          }
+
+          .header-column4 {
+            width: 15%;
+          }
+        }
+      }
+
+      .dashboard-table-fields {
+        height: 455px;
+        overflow: scroll;
+        width: 97%;
+
+        .fields {
+          .table-fields {
+            padding: 15px;
+            margin-top: 10px;
+            border: 1px solid var(--blush);
+            background-color: var(--white);
+            color: var(--dark-highlight);
+
+            .field-column1 {
+              width: 30%;
+
+              .column1-text {
+                width: 212px;
+                line-height: 17px;
+                letter-spacing: 0.01em;
+                color: var(--font-color);
+              }
+
+              .profile-icon {
+                height: 25px;
+              }
+
+              .profile-text {
+                margin-left: 15px;
+              }
+            }
+
+            .field-column2 {
+              width: 23%;
+              line-height: 15px;
+              letter-spacing: 0.02em;
+            }
+
+            .field-column3 {
+              width: 22%;
+              line-height: 15px;
+              letter-spacing: 0.02em;
+            }
+
+            .field-column4 {
+              width: 15%;
+              line-height: 15px;
+              letter-spacing: 0.02em;
+              color: var(--complimentary-green);
+            }
+          }
+        }
+
+        .table-row {
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}
