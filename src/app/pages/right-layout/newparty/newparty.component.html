@@ -9,26 +9,26 @@
         <div class="fw-600">Party Name</div>
         <nb-form-field class="width">
           <nb-icon nbPrefix icon="person-add-outline" pack="eva"></nb-icon>
-          <input type="text" fieldSize="giant" fullWidth nbInput placeholder="Party Name" formControlName="partnerName">
+          <input type="text" fieldSize="giant" fullWidth nbInput placeholder="Party Name" formControlName="partyName" required>
         </nb-form-field>
       </div>
       <div class="party-fields">
         <div class="fw-600">Address</div>
         <nb-form-field class="width">
           <nb-icon nbPrefix icon="map-outline" pack="eva"></nb-icon>
-          <input type="text" fieldSize="giant" fullWidth nbInput placeholder="Address" formControlName="partnerAddress">
+          <input type="text" fieldSize="giant" fullWidth nbInput placeholder="Address" formControlName="partyAddress" required>
         </nb-form-field>
       </div>
       <div class="party-fields">
         <div class="fw-600">GST Number</div>
-        <input type="text" fieldSize="giant" fullWidth nbInput placeholder="GST Number" class="width" formControlName="partnerGst">
+        <input type="text" fieldSize="giant" fullWidth nbInput placeholder="GST Number" class="width" formControlName="partyGst" required>
       </div>
     </form>
   </div>
   <div class="party-footer flex flex-col justify-end align-items-end relative">
     <div class="buttons">
       <button nbButton status="basic" outline class="transform-none text-base" [routerLink]="'/parties'"><nb-icon icon="arrow-back"></nb-icon>Back To List</button>
-      <button nbButton status="basic" class="transform-none text-base">Create</button>
+      <button nbButton status="basic" class="transform-none text-base" (click)="addParty()" [disabled]="!newPartyForm.valid">Create</button>
     </div>
   </div>
 </div>

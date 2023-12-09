@@ -1,9 +1,9 @@
 <div class="parties">
   <div class="flex align-items-end justify-end">
     <div class="top-search">
-      <nb-form-field>
+      <nb-form-field [formGroup]="searchParty">
         <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
-        <input type="text" placeholder="Search" nbInput>
+        <input type="text" placeholder="Search" nbInput formControlName="searchValue">
       </nb-form-field>
     </div>
     <div class="top-button">
@@ -34,14 +34,14 @@
             <div class="field-column1 flex justify-center">
               <div
                 class="column1-text flex align-item-center style-normal fw-500">
-                <div class="hr-support-name text-base">{{ party['party_name'] }}</div>
+                <div class="hr-support-name text-base">{{ party['Name'] }}</div>
               </div>
             </div>
             <div class="field-column2 flex justify-center style-normal fw-500">
-              <div class="text-m">{{ party['address'] }}</div>
+              <div class="text-m">{{ party['Address'] }}</div>
             </div>
             <div class="field-column3 style-normal fw-500 text-m">
-              {{ party['gst'] }}
+              {{ party['GST'] }}
             </div>
           </div>
         </div>

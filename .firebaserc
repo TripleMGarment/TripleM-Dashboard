@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "triplemgarment-94265": {
+      "hosting": {
+        "tripleMDashboard": [
+          "triplemgarment-94265"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "triplemgarment-94265"
+  }
+}

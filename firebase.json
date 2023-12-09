@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "tripleMDashboard",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}
