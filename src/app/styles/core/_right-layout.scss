@@ -15,3 +15,24 @@
 nb-layout .layout .layout-container .content .columns nb-layout-column {
   padding: 1.5rem 1.5rem 0;
 }
+
+input[type='file'] {
+  color: transparent;
+}
+
+input[type='file']::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+input[type='file']::before {
+  content: 'Upload Image';
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+nb-option-list.size-giant nb-option {
+  font-size: var(--option-medium-text-font-size);
+  font-weight: var(--option-medium-text-font-weight);
+  line-height: var(--option-medium-text-line-height);
+  padding: var(--option-medium-padding);
+}

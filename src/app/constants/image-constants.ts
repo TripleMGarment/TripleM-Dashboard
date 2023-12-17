@@ -3,4 +3,8 @@ export class ImageConstants {
     logo: '/assets/logo/logo.png',
     namedLogo: '/assets/logo/namelogo.png'
   }
+
+  public static imagePath = {
+    searchNotFound: '/assets/search-not-found.png'
+  }
 }

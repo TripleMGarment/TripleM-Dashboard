@@ -1,0 +1,44 @@
+.order-details {
+  padding: 17px;
+  width: 700px;
+  height: 700px;
+
+  .order-image {
+    img {
+      width: 100%;
+    }
+    width: 500px;
+  }
+
+  .dialog-close {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    float: right;
+    background: rgba(51, 51, 51, 0.25);
+    margin-right: -20px;
+
+    .close-cross {
+      margin-top: 6px;
+      color: var(--white);
+    }
+  }
+
+  .accordion {
+    .accordion-header {
+      color: var(--dark-highlight);
+
+      nb-icon {
+        margin-right: 10px;
+      }
+    }
+
+    .accordion-body {
+      color: var(--dark-highlight);
+
+      .accordion-item {
+        margin-top: 30px;
+      }
+    }
+  }
+}

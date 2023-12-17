@@ -1,0 +1,63 @@
+<div class="new-party flex flex-col">
+  <div class="flex title text-lg fw-600">
+    <nb-icon icon="shopping-bag"></nb-icon>
+    <div class="title-text">Add Order Detail</div>
+  </div>
+  <div class="flex flex-col party-form width">
+    <form class="width" [formGroup]="newOrderForm">
+      <div class="party-fields">
+        <div class="fw-600">Order Detail</div>
+        <nb-form-field class="width">
+          <nb-icon nbPrefix icon="shopping-bag-outline" pack="eva"></nb-icon>
+          <input type="text" fieldSize="giant" fullWidth nbInput placeholder="Order Detail" formControlName="orderDetail" required>
+        </nb-form-field>
+      </div>
+      <div class="party-fields">
+        <div class="fw-600">Date</div>
+        <nb-form-field class="width">
+          <nb-icon nbPrefix icon="calendar-outline" pack="eva"></nb-icon>
+          <input fieldSize="giant" fullWidth nbInput placeholder="Order Date" formControlName="orderDate" required [nbDatepicker]="dateTimePicker">
+          <nb-datepicker #dateTimePicker></nb-datepicker>
+        </nb-form-field>
+      </div>
+      <div class="party-fields">
+        <div class="fw-600">Image</div>
+        <nb-form-field class="width pointer">
+          <nb-icon nbPrefix icon="image-outline" pack="eva"></nb-icon>
+          <input
+            type="file"
+            fieldSize="giant"
+            fullWidth
+            nbInput
+            placeholder="Image"
+            class="width pointer"
+            formControlName="image"
+            required
+            accept=".png,.jpg,.jpeg"
+            id="file-input"
+          >
+          <nb-datepicker #dateTimePicker></nb-datepicker>
+        </nb-form-field>
+      </div>
+      <div class="party-fields">
+        <div class="fw-600">Party Name</div>
+        <nb-form-field class="width">
+          <nb-icon nbPrefix icon="people-outline" pack="eva"></nb-icon>
+          <nb-select placeholder="Select Party" size="giant" formControlName="partyName" fullWidth required>
+            <nb-option value="0">Option 0</nb-option>
+            <nb-option value="1">Option 1</nb-option>
+            <nb-option value="2">Option 2</nb-option>
+            <nb-option value="3">Option 3</nb-option>
+            <nb-option value="4">Option 4</nb-option>
+          </nb-select>
+        </nb-form-field>
+      </div>
+    </form>
+  </div>
+  <div class="party-footer flex flex-col justify-end align-items-end relative">
+    <div class="buttons">
+      <button nbButton status="basic" outline class="transform-none text-base" [routerLink]="'/orders'"><nb-icon icon="arrow-back"></nb-icon>Back To List</button>
+      <button nbButton status="basic" class="transform-none text-base" (click)="addOrder()" [disabled]="!newOrderForm.valid">Create</button>
+    </div>
+  </div>
+</div>

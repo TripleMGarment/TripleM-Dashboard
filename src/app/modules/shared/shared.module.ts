@@ -9,6 +9,8 @@ import {PartiesComponent} from "../../pages/right-layout/parties/parties.compone
 import {NewpartyComponent} from "../../pages/right-layout/newparty/newparty.component";
 import {RouterLink} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
+import {OrderDetailComponent} from "../../components/order-detail/order-detail.component";
+import {NeworderComponent} from "../../pages/right-layout/neworder/neworder.component";
 
 const modules = [
   HeaderComponent,
@@ -16,7 +18,9 @@ const modules = [
   DashboardComponent,
   OrdersComponent,
   PartiesComponent,
-  NewpartyComponent
+  NewpartyComponent,
+  OrderDetailComponent,
+  NeworderComponent
 ]
 
 @NgModule({

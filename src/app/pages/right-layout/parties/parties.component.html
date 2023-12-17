@@ -26,7 +26,7 @@
     </div>
   </div>
   <div class="flex justify-center width">
-    <div class="dashboard-table-fields">
+    <div class="dashboard-table-fields" *ngIf="!searchNotFound" [nbSpinner]="showSpinner" nbSpinnerSize="giant">
       <div class="fields" *ngFor="let party of partiesList">
         <div class="table-row">
           <div
@@ -46,6 +46,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div *ngIf="searchNotFound">
+      <img [src]="ImageConstants.imagePath.searchNotFound" alt="search_not_found" />
     </div>
   </div>
 </div>

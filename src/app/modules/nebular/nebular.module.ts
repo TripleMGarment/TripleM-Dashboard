@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
+  NbAccordionModule,
   NbButtonModule,
-  NbCardModule, NbFormFieldModule,
+  NbCardModule, NbDatepickerModule, NbDialogModule, NbFormFieldModule,
   NbIconModule,
   NbInputModule,
-  NbMenuModule,
-  NbSidebarModule,
+  NbMenuModule, NbSelectModule,
+  NbSidebarModule, NbSpinnerModule,
   NbUserModule
 } from "@nebular/theme";
 import {NbEvaIconsModule} from "@nebular/eva-icons";
@@ -19,7 +20,12 @@ const modules = [
   NbCardModule,
   NbIconModule,
   NbInputModule,
-  NbFormFieldModule
+  NbFormFieldModule,
+  NbSpinnerModule,
+  NbDialogModule,
+  NbAccordionModule,
+  NbDatepickerModule,
+  NbSelectModule
 ];
 
 @NgModule({
@@ -28,7 +34,9 @@ const modules = [
     CommonModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
-    NbEvaIconsModule
+    NbEvaIconsModule,
+    NbDialogModule.forRoot(),
+    NbDatepickerModule.forRoot(),
   ],
   exports: [...modules],
 })

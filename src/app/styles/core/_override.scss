@@ -1,10 +1,15 @@
-.parties {
-  .top-button {
-    button {
-      background-color: var(--complimentary-green)!important;
-      color: var(--white) !important;
-      line-height: 20px !important;
-      letter-spacing: 0.02em;
-    }
+.top-button {
+  button {
+    background-color: var(--complimentary-green)!important;
+    color: var(--white) !important;
+    line-height: 20px !important;
+    letter-spacing: 0.02em;
   }
+}
+
+
+nb-spinner.status-basic .spin-circle {
+  border-top-color: var(--complimentary-green);
+  border-bottom-color: var(--complimentary-green);
+  border-left-color: var(--complimentary-green);
 }

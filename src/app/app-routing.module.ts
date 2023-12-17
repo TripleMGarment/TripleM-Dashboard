@@ -4,6 +4,7 @@ import {DashboardComponent} from "./pages/right-layout/dashboard/dashboard.compo
 import {OrdersComponent} from "./pages/right-layout/orders/orders.component";
 import {PartiesComponent} from "./pages/right-layout/parties/parties.component";
 import {NewpartyComponent} from "./pages/right-layout/newparty/newparty.component";
+import {NeworderComponent} from "./pages/right-layout/neworder/neworder.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'orders',
     component: OrdersComponent
+  },
+  {
+    path: 'new-order',
+    component: NeworderComponent
   }
 ];
 

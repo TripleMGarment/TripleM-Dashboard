@@ -1,0 +1,49 @@
+<nb-card class="order-details">
+  <nb-card-body>
+    <div class="dialog-close border-radius-input pointer" (click)="onClose()">
+      <div class="close-cross">X</div>
+    </div>
+    <div class="flex justify-center align-item-center">
+      <div class="order-image">
+        <img src="{{ orderDetail.image }}" alt="output_image" />
+      </div>
+    </div>
+    <div class="accordion">
+      <nb-accordion multi>
+        <nb-accordion-item>
+          <nb-accordion-item-header class="accordion-header text-lg">
+            <nb-icon icon="shopping-bag"></nb-icon>Order Details
+          </nb-accordion-item-header>
+          <nb-accordion-item-body class="accordion-body">
+            <div class="text-base">{{ orderDetail.detail }}</div>
+            <div class="flex accordion-item">
+              <div class="fw-600">Ordered Date : &nbsp;&nbsp;</div>
+              <div>{{ orderDetail.date }}</div>
+            </div>
+          </nb-accordion-item-body>
+        </nb-accordion-item>
+
+        <nb-accordion-item>
+          <nb-accordion-item-header class="accordion-header text-lg">
+            <nb-icon icon="people"></nb-icon>Party Details
+          </nb-accordion-item-header>
+          <nb-accordion-item-body class="accordion-body">
+            <div class="flex">
+              <div class="fw-600">Name : &nbsp;&nbsp;</div>
+              <div>{{ orderDetail.party.party_name }}</div>
+            </div>
+            <div class="flex accordion-item">
+              <div class="fw-600">Address : &nbsp;&nbsp;</div>
+              <div>{{ orderDetail.party.address }}</div>
+            </div>
+            <div class="flex accordion-item">
+              <div class="fw-600">GST No : &nbsp;&nbsp;</div>
+              <div>{{ orderDetail.party.gst }}</div>
+            </div>
+          </nb-accordion-item-body>
+        </nb-accordion-item>
+      </nb-accordion>
+    </div>
+
+  </nb-card-body>
+</nb-card>
