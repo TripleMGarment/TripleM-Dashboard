@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {FirebaseCrudService} from "../../../services/firebase-crud/firebase-crud.service";
+import { Guid } from 'guid-typescript';
 
 @Component({
   selector: 'app-newparty',
@@ -23,7 +24,8 @@ export class NewpartyComponent implements OnInit {
       var data = {
         Name: this.newPartyForm?.get('partyName')?.value,
         Address: this.newPartyForm?.get('partyAddress')?.value,
-        GST: this.newPartyForm?.get('partyGst')?.value
+        GST: this.newPartyForm?.get('partyGst')?.value,
+        id: Guid.create()['value']
       }
       this.firebase.createDocument('Parties',data);
       this.newPartyForm.reset();

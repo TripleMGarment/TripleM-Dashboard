@@ -9,6 +9,7 @@ import {NebularModule} from "./modules/nebular/nebular.module";
 import {SharedModule} from "./modules/shared/shared.module";
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 import { environment } from "../environments/environment.development";
 
 
@@ -25,7 +26,8 @@ import { environment } from "../environments/environment.development";
     NebularModule,
     SharedModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
   ],
   providers: [],
   bootstrap: [AppComponent]

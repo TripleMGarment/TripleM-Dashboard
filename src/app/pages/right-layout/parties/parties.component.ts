@@ -38,7 +38,7 @@ export class PartiesComponent implements OnInit {
     console.log(data);
     (await data).forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
+      // console.log(doc.id, " => ", doc.data());
     });
     this.list = this.partiesList;
     this.showSpinner = false;
