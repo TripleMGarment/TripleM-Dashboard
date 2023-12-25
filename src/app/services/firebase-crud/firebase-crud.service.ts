@@ -21,12 +21,12 @@ export class FirebaseCrudService {
   }
 
   async getDocumentById(collectionName: string, key: string, value: string) {
-    var document;
+    var document: any = [];
     const q = query(collection(this.firestore, collectionName), where(key, "==", value));
     (await getDocs(q)).forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
-      document = doc.data();
+      document.push(doc.data());
     });
     return document;
   }

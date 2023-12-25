@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { ImageConstants } from '../../../constants/image-constants';
 import { NbDialogService } from '@nebular/theme';
 import {OrderDetailComponent} from "../../../components/order-detail/order-detail.component";
 import {FirebaseCrudService} from "../../../services/firebase-crud/firebase-crud.service";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-orders',
@@ -17,8 +18,9 @@ export class OrdersComponent implements OnInit {
   searchNotFound: boolean = false;
   protected readonly ImageConstants = ImageConstants;
   showSpinner: boolean = false;
+  partyIdFromRoute: string | undefined;
 
-  constructor(private dialogService: NbDialogService, private firebase: FirebaseCrudService, private fb: FormBuilder) {
+  constructor(private dialogService: NbDialogService, private firebase: FirebaseCrudService, private fb: FormBuilder, private route: ActivatedRoute) {
     this.searchOrder = this.fb.group({
       searchValue: new FormControl("")
     });
@@ -32,33 +34,46 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit() {
     this.showSpinner = true;
-    this.getDocuments();
+    this.partyIdFromRoute = this.route?.snapshot?.params['id']
+
+    if (this.partyIdFromRoute === undefined) {
+      this.getDocuments();
+    } else {
+      this.getDocumentsById(this.partyIdFromRoute);
+    }
   }
 
   async getDocuments() {
     var data = this.firebase.getDocuments('Orders');
     this.ordersList = (await data).docs.map(doc => doc.data());
-    console.log(data);
     (await data).forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      // console.log(doc.id, " => ", doc.data());
     });
     this.ordersList.forEach((data) => {
-      console.log(data.PartyId);
       const party = this.firebase.getDocumentById('Parties', 'id', data.PartyId);
       party.then(partyData => {
-        console.log(partyData);
-        data.PartyId = partyData;
+        data.PartyId = partyData[0];
       })
     })
-    console.log(this.ordersList);
     this.list = this.ordersList;
-    console.log(this.ordersList);
     this.showSpinner = false;
   }
 
+  getDocumentsById(routeId: string) {
+    const party = this.firebase.getDocumentById('Parties', 'id', routeId);
+    party.then(partyData => {
+      const order = this.firebase.getDocumentById('Orders', 'PartyId', routeId);
+      order.then(orderData => {
+        orderData.forEach((eachOrder: any) => {
+          eachOrder.PartyId = partyData[0]
+        })
+        this.ordersList = orderData;
+        this.list = this.ordersList;
+        this.showSpinner = false;
+      })
+    })
+  }
+
   openOrderDetail(order: any) {
-    console.log(order);
     this.dialogService
       .open(OrderDetailComponent, {
         context: {

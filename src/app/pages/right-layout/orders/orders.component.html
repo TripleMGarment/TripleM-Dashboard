@@ -27,7 +27,7 @@
     </div>
   </div>
   <div class="flex justify-center width">
-    <div class="dashboard-table-fields" [nbSpinner]="showSpinner" nbSpinnerSize="giant">
+    <div class="dashboard-table-fields" *ngIf="!searchNotFound" [nbSpinner]="showSpinner" nbSpinnerSize="giant">
       <div class="fields" *ngFor="let order of ordersList">
         <div class="table-row">
           <div

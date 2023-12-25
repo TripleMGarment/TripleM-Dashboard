@@ -26,6 +26,7 @@ export class SidebarComponent {
     {
       title: 'Logout',
       icon: 'unlock-outline',
+      link: 'logout'
     },
   ];
 }

@@ -1,8 +1,8 @@
 <nb-layout>
-  <nb-layout-header fixed class="navbar width">
+  <nb-layout-header fixed class="navbar width" *ngIf="hideSidebar">
     <app-header class="width"></app-header>
   </nb-layout-header>
-  <nb-sidebar class="sidebar width">
+  <nb-sidebar class="sidebar width" *ngIf="hideSidebar">
     <app-sidebar class="width"></app-sidebar>
   </nb-sidebar>
   <nb-layout-column class="main-layout">
