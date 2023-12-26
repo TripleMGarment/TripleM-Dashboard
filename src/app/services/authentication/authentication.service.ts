@@ -38,12 +38,13 @@ export class AuthenticationService {
         this.ngZone.run(() => {
           /* Call the SendVerificaitonMail() function when new user sign
        up and returns promise */
-          this.sendEmailVerification()
-          // this.router.navigate(['/dashboard']);
+          this.sendEmailVerification();
+          return true;
         });
       })
       .catch((error) => {
         window.alert(error.message);
+        return false;
       });
   }
 
@@ -55,10 +56,10 @@ export class AuthenticationService {
   Login(email: string, password: string) {
     return signInWithEmailAndPassword(this.auth, email, password)
       .then((result) => {
-        console.log(result);
+        return true;
       })
       .catch((error) => {
-        window.alert(error.message);
+        return false;
       });
   }
 
@@ -72,6 +73,8 @@ export class AuthenticationService {
   }
 
   Logout() {
-    signOut(this.auth).then(()=>this.router.navigate(['/sign-in']))
+    localStorage.setItem('user', 'null');
+    JSON.parse(localStorage.getItem('user')!);
+    signOut(this.auth).then(()=>this.router.navigate(['/login']))
   }
 }

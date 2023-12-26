@@ -1,0 +1,69 @@
+.authBlock {
+  .login-image {
+    height: 80vh;
+    object-fit: fill;
+    border-radius: 0.9rem;
+  }
+
+  .right-block {
+    margin-top: -80px;
+    color: var(--dark-highlight);
+
+    .auth-form {
+      margin-top: 40px;
+
+      form {
+        margin-top: 40px;
+
+        .auth-fields {
+          margin-top: 25px;
+
+          .nb-form-field-addon-basic {
+            color: var(--dark-highlight);
+          }
+
+          .nb-form-field-addon-basic-highlight {
+            color: var(--dark-highlight);
+          }
+
+          [nbInput].status-basic {
+            background-color: var(--blush)!important;
+            border-color: var(--sidebar-background);
+            color: var(--dark-highlight);
+          }
+
+          [nbInput].status-basic::placeholder {
+            color: var(--dark-highlight);
+          }
+
+          .field {
+            margin-top: 10px;
+          }
+        }
+      }
+
+      button {
+        margin-top: 20px;
+      }
+
+      [nbButton].appearance-outline.status-basic, .appearance-outline.status-basic[nbButtonToggle] {
+        border: 1.5px solid var(--sidebar-background);
+        color: var(--dark-highlight);
+      }
+
+      [nbButton].appearance-filled.status-basic, .appearance-filled.status-basic[nbButtonToggle] {
+        background-color: var(--complimentary-green);
+        color: var(--header-background);
+      }
+    }
+
+    .auth-redirect {
+      margin-top: 20px;
+      color: var(--dark-highlight);
+
+      .redirect {
+        color: var(--complimentary-green);
+      }
+    }
+  }
+}

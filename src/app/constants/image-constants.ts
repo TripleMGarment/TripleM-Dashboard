@@ -5,6 +5,7 @@ export class ImageConstants {
   }
 
   public static imagePath = {
-    searchNotFound: '/assets/search-not-found.png'
+    searchNotFound: '/assets/search-not-found.png',
+    loginSignupImage: '/assets/login.png'
   }
 }

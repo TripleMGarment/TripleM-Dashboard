@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
-import {NbMenuItem} from "@nebular/theme";
+import {Component, OnChanges} from '@angular/core';
+import {NbMenuItem, NbMenuService} from "@nebular/theme";
+import {AuthenticationService} from "../../services/authentication/authentication.service";
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent {
+export class SidebarComponent{
+
+  constructor(private authenticationService: AuthenticationService, private menuService: NbMenuService) {
+  }
   items: NbMenuItem[] = [
     {
       title: 'Dashboard',
@@ -26,7 +30,7 @@ export class SidebarComponent {
     {
       title: 'Logout',
       icon: 'unlock-outline',
-      link: 'logout'
+      link: 'login',
     },
   ];
 }

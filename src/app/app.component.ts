@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, RoutesRecognized} from "@angular/router";
+import {AuthenticationService} from "./services/authentication/authentication.service";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent implements OnInit{
   hideSidebar: boolean = false;
   isLogged: boolean = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authenticationService: AuthenticationService) {
   }
 
   ngOnInit() {
@@ -22,6 +23,8 @@ export class AppComponent implements OnInit{
         };
         this.hideSidebar = showSidebar === undefined ? true : showSidebar;
       }
+      this.isLogged = this.authenticationService.isAuthenticated();
     });
+    console.log(this.isLogged);
   }
 }

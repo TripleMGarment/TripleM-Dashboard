@@ -5,8 +5,8 @@
   <nb-sidebar class="sidebar width" *ngIf="hideSidebar">
     <app-sidebar class="width"></app-sidebar>
   </nb-sidebar>
-  <nb-layout-column class="main-layout">
-    <nb-card class="height box-shadow-card">
+  <nb-layout-column class="main-layout" [ngClass]="isLogged ? '' : 'flex justify-center align-item-center'">
+    <nb-card [ngClass]="isLogged ? 'height' : 'fix-auth-layout'" class="box-shadow-card">
       <nb-card-body>
         <div class="height-100">
           <router-outlet></router-outlet>

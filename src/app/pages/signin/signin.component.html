@@ -1,32 +1,40 @@
-<div class="authBlock">
-  <h3>Login</h3>
-  <div class="formGroup">
-    <input
-      type="text"
-      class="formControl"
-      placeholder="Username"
-      #userEmail
-      required
-    />
-  </div>
-  <div class="formGroup">
-    <input
-      type="password"
-      class="formControl"
-      placeholder="Password"
-      #userPassword
-      required
-    />
-  </div>
-
-  <div class="formGroup">
-    <input
-      type="button"
-      class="btn btnPrimary"
-      value="Sign Up"
-      (click)="
-          authenticationService.Login(userEmail.value, userPassword.value)
-        "
-    />
+<div class="authBlock new-party height-100">
+  <div class="flex height-100">
+    <div class="width-50">
+      <img src="{{ ImageConstants.imagePath.loginSignupImage }}" alt="login_image" class="width height-100 login-image" />
+    </div>
+    <div class="width-50 height-100">
+      <div class="flex justify-center align-item-center height-100">
+        <div class="right-block">
+          <div class="fw-600 text-title">Login</div>
+            <div class="auth-form text-base fw-500">
+              <div>Login to your account with email and password</div>
+              <form [formGroup]="loginForm">
+                <div class="auth-fields">
+                  <div class="fw-500 text-base">User Email</div>
+                  <nb-form-field class="width field">
+                    <nb-icon nbPrefix icon="email-outline" pack="eva"></nb-icon>
+                    <input type="email" fieldSize="medium" fullWidth nbInput placeholder="Email" shape="semi-round" formControlName="userEmail" required>
+                  </nb-form-field>
+                </div>
+                <div class="auth-fields">
+                  <div class="fw-500 text-base">Password</div>
+                  <nb-form-field class="width field">
+                    <nb-icon nbPrefix icon="eye-off-outline" pack="eva"></nb-icon>
+                    <input type="password" fieldSize="medium" fullWidth nbInput placeholder="Password" shape="semi-round" formControlName="userPassword" required>
+                  </nb-form-field>
+                </div>
+              </form>
+              <div class="flex align-item-center justify-center">
+                <button nbButton status="basic" class="transform-none text-base" (click)="login()" [disabled]="!loginForm.valid">Let's Go</button>
+              </div>
+            </div>
+            <div class="flex auth-redirect">
+              <div class="fw-400 text-base">Don't have an Account?&nbsp;</div>
+              <div class="underline fw-500 text-base redirect pointer" [routerLink]="'/signup'">Sign Up</div>
+            </div>
+          </div>
+      </div>
+    </div>
   </div>
 </div>

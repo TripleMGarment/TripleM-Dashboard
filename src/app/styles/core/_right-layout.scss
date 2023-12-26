@@ -5,6 +5,16 @@
     height: 87.5vh;
   }
 
+  .fix-auth-layout {
+    height: 80vh;
+    width: 1400px;
+
+    nb-card-body {
+      padding: 0;
+      overflow: hidden;
+    }
+  }
+
   nb-card {
     background-color: var(--header-background);
     border-color: var(--header-background);
