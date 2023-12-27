@@ -3,6 +3,8 @@ import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {FirebaseCrudService} from "../../../services/firebase-crud/firebase-crud.service";
 import { Storage, ref, uploadBytesResumable } from '@angular/fire/storage';
 import {GlobalService} from "../../../services/global.service";
+import {ToastrService} from "../../../services/toastr/toastr.service";
+import {ToastrConstants} from "../../../constants/toastr-constants";
 
 @Component({
   selector: 'app-neworder',
@@ -16,7 +18,11 @@ export class NeworderComponent implements OnInit{
   orderImage: any;
   showSpinner: boolean = false;
 
-  constructor(private fb: FormBuilder, private firebase: FirebaseCrudService, private globalService: GlobalService) {
+  constructor(private fb: FormBuilder,
+              private firebase: FirebaseCrudService,
+              private globalService: GlobalService,
+              private toastrService: ToastrService
+  ) {
     this.newOrderForm = this.fb.group({
       orderDetail: new FormControl(""),
       orderDate: new FormControl(""),
@@ -32,27 +38,32 @@ export class NeworderComponent implements OnInit{
     this.showSpinner = true;
     console.log(this.newOrderForm);
     var fileName, formatedDate: string | undefined;
-    this.partiesList.forEach((party) => {
-      if (party['id'] === this.newOrderForm.get('partyName')?.value) {
-        fileName = party.Name;
-        return;
-      }
-    })
-    formatedDate = this.globalService.formatDate(this.newOrderForm.get('orderDate')?.value)
-    fileName = 'orders/' + fileName + '-' + formatedDate;
-    const url = this.firebase.pushFileToStorage(this.orderImage, fileName);
-    url.then(imageURL => {
-      console.log(imageURL)
-      var data = {
-        'Order detail': this.newOrderForm.get('orderDetail')?.value,
-        Date: formatedDate,
-        ImageURL: imageURL,
-        PartyId: this.newOrderForm.get('partyName')?.value
-      }
-      this.firebase.createDocument('Orders',data);
-      this.newOrderForm.reset();
-      this.showSpinner = false;
-    });
+    if (this.newOrderForm.valid) {
+      this.partiesList.forEach((party) => {
+        if (party['id'] === this.newOrderForm.get('partyName')?.value) {
+          fileName = party.Name;
+          return;
+        }
+      })
+      formatedDate = this.globalService.formatDate(this.newOrderForm.get('orderDate')?.value)
+      fileName = 'orders/' + fileName + '-' + formatedDate;
+      const url = this.firebase.pushFileToStorage(this.orderImage, fileName);
+      url.then(imageURL => {
+        console.log(imageURL)
+        var data = {
+          'Order detail': this.newOrderForm.get('orderDetail')?.value,
+          Date: formatedDate,
+          ImageURL: imageURL,
+          PartyId: this.newOrderForm.get('partyName')?.value
+        }
+        this.firebase.createDocument('Orders',data);
+        this.toastrService.showSuccessToast(ToastrConstants.toastrSuccessMessage.newOrder);
+        this.newOrderForm.reset();
+        this.showSpinner = false;
+      });
+    } else {
+      this.toastrService.showDangerToast(ToastrConstants.toastrFailureMessage.newOrder);
+    }
   }
 
   onOrderImageUploaded(event: any) {

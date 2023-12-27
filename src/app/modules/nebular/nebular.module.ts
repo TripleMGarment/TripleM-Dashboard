@@ -7,7 +7,7 @@ import {
   NbIconModule,
   NbInputModule,
   NbMenuModule, NbSelectModule,
-  NbSidebarModule, NbSpinnerModule,
+  NbSidebarModule, NbSpinnerModule, NbToastrModule,
   NbUserModule
 } from "@nebular/theme";
 import {NbEvaIconsModule} from "@nebular/eva-icons";
@@ -37,6 +37,7 @@ const modules = [
     NbEvaIconsModule,
     NbDialogModule.forRoot(),
     NbDatepickerModule.forRoot(),
+    NbToastrModule.forRoot(),
   ],
   exports: [...modules],
 })

@@ -9,6 +9,8 @@ import {
   User
 } from '@angular/fire/auth';
 import {Router} from "@angular/router";
+import {ToastrService} from "../toastr/toastr.service";
+import {ToastrConstants} from "../../constants/toastr-constants";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,7 @@ import {Router} from "@angular/router";
 export class AuthenticationService {
   UserData : any;
   constructor(
-    private auth: Auth, private router : Router, public ngZone: NgZone
+    private auth: Auth, private router : Router, public ngZone: NgZone, private toastrService: ToastrService
   ) {
     onAuthStateChanged(this.auth,(user: any)=>{
       if(user){
@@ -39,11 +41,12 @@ export class AuthenticationService {
           /* Call the SendVerificaitonMail() function when new user sign
        up and returns promise */
           this.sendEmailVerification();
+          this.toastrService.showSuccessToast(ToastrConstants.toastrSuccessMessage.signup);
           return true;
         });
       })
       .catch((error) => {
-        window.alert(error.message);
+        this.toastrService.showDangerToast(ToastrConstants.toastrFailureMessage.signup);
         return false;
       });
   }
@@ -56,9 +59,11 @@ export class AuthenticationService {
   Login(email: string, password: string) {
     return signInWithEmailAndPassword(this.auth, email, password)
       .then((result) => {
+        this.toastrService.showSuccessToast(ToastrConstants.toastrSuccessMessage.login);
         return true;
       })
       .catch((error) => {
+        this.toastrService.showDangerToast(ToastrConstants.toastrFailureMessage.login);
         return false;
       });
   }

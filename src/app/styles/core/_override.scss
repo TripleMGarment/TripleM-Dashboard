@@ -13,3 +13,7 @@ nb-spinner.status-basic .spin-circle {
   border-bottom-color: var(--complimentary-green);
   border-left-color: var(--complimentary-green);
 }
+
+.cdk-overlay-container {
+  z-index: 9999;
+}

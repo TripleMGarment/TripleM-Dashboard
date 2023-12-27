@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {FirebaseCrudService} from "../../../services/firebase-crud/firebase-crud.service";
 import { Guid } from 'guid-typescript';
+import {ToastrService} from "../../../services/toastr/toastr.service";
+import {ToastrConstants} from "../../../constants/toastr-constants";
 
 @Component({
   selector: 'app-newparty',
@@ -11,7 +13,10 @@ import { Guid } from 'guid-typescript';
 export class NewpartyComponent implements OnInit {
   newPartyForm: FormGroup; // Holds the value of the form inputs
 
-  constructor(private fb: FormBuilder, private firebase: FirebaseCrudService) {
+  constructor(private fb: FormBuilder,
+              private firebase: FirebaseCrudService,
+              private toastrService: ToastrService
+  ) {
     this.newPartyForm = this.fb.group({
       partyName: new FormControl(""),
       partyAddress: new FormControl(""),
@@ -28,9 +33,10 @@ export class NewpartyComponent implements OnInit {
         id: Guid.create()['value']
       }
       this.firebase.createDocument('Parties',data);
+      this.toastrService.showSuccessToast(ToastrConstants.toastrSuccessMessage.newParty);
       this.newPartyForm.reset();
     } else {
-
+      this.toastrService.showDangerToast(ToastrConstants.toastrFailureMessage.newParty);
     }
   }
 

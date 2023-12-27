@@ -2,6 +2,8 @@ import {inject, Injectable} from '@angular/core';
 import {Firestore} from '@angular/fire/firestore';
 import {addDoc, collection, getDocs, query, where} from 'firebase/firestore';
 import {getDownloadURL, ref, Storage, uploadBytesResumable} from "@angular/fire/storage";
+import {ToastrService} from "../toastr/toastr.service";
+import {ToastrConstants} from "../../constants/toastr-constants";
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +11,15 @@ import {getDownloadURL, ref, Storage, uploadBytesResumable} from "@angular/fire/
 export class FirebaseCrudService {
   firestore: Firestore = inject(Firestore);
   private readonly storage: Storage = inject(Storage);
-  constructor() { }
+  constructor(private toastrService: ToastrService) { }
 
   createDocument(collectionName: string, data: {}) {
     const acollection = collection(this.firestore,collectionName);
-    addDoc(acollection, data)
+    try {
+      addDoc(acollection, data)
+    } catch (error) {
+      this.toastrService.showDangerToast(ToastrConstants.toastrFailureMessage.firebaseError);
+    }
   }
 
   async getDocuments(collectionName: string) {
@@ -37,10 +43,11 @@ export class FirebaseCrudService {
     try {
       // Upload the file
       await uploadBytesResumable(storageRef, image);
-
+      this.toastrService.showSuccessToast(ToastrConstants.toastrSuccessMessage.fileUpload);
       // Get the download URL after a successful upload
       return await this.getDownloadableURL(fileName);
     } catch (error) {
+      this.toastrService.showDangerToast(ToastrConstants.toastrFailureMessage.fileUpload);
       return;
     }
   }
