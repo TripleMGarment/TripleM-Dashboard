@@ -24,6 +24,7 @@
       <div class="header-column2">Detail</div>
       <div class="header-column3">Date</div>
       <div class="header-column4">Party</div>
+      <div class="header-column5"></div>
     </div>
   </div>
   <div class="flex justify-center width">
@@ -46,6 +47,17 @@
             </div>
             <div class="field-column4 style-normal fw-500 text-m">
               {{ order['PartyId']['Name'] }}
+            </div>
+            <div class="field-column5 flex">
+<!--              <nb-icon nbPrefix icon="edit-2-outline" pack="eva" [options]="{ animation: { type: 'shake' }}" class="pointer"></nb-icon>-->
+              <nb-icon
+                nbPrefix
+                icon="trash-2-outline"
+                pack="eva"
+                [options]="{ animation: { type: 'shake' }}"
+                class="pointer"
+                (click)="deleteDocument(order)"
+              ></nb-icon>
             </div>
           </div>
         </div>

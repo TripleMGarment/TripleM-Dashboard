@@ -43,11 +43,15 @@
       }
 
       .header-column3 {
-        width: 20%;
+        width: 28%;
       }
 
       .header-column4 {
-        width: 35%;
+        width: 27%;
+      }
+
+      .header-column5 {
+        width: 10%
       }
     }
   }
@@ -80,13 +84,26 @@
         }
 
         .field-column3 {
-          width: 20%;
+          width: 28%;
           line-height: 15px;
           letter-spacing: 0.02em;
         }
 
         .field-column4 {
-          width: 35%;
+          width: 27%;
+        }
+
+        .field-column5 {
+          width: 10%;
+
+          nb-icon {
+            margin-right: 15px;
+          }
+
+          nb-icon:hover {
+            color: var(--complimentary-green);
+            font-size: 1.6rem;
+          }
         }
       }
     }

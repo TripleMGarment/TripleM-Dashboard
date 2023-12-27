@@ -35,15 +35,19 @@
       color: var(--dark-highlight);
 
       .header-column1 {
-        width: 35%;
+        width: 30%;
       }
 
       .header-column2 {
-        width: 33%;
+        width: 28%;
       }
 
       .header-column3 {
-        width: 32%;
+        width: 30%;
+      }
+
+      .header-column4 {
+        width: 10%
       }
     }
   }
@@ -62,7 +66,7 @@
         color: var(--dark-highlight);
 
         .field-column1 {
-          width: 35%;
+          width: 30%;
 
           .column1-text {
             width: 212px;
@@ -81,15 +85,28 @@
         }
 
         .field-column2 {
-          width: 33%;
+          width: 28%;
           line-height: 15px;
           letter-spacing: 0.02em;
         }
 
         .field-column3 {
-          width: 32%;
+          width: 30%;
           line-height: 15px;
           letter-spacing: 0.02em;
+        }
+
+        .field-column4 {
+          width: 10%;
+
+          nb-icon {
+            margin-right: 15px;
+          }
+
+          nb-icon:hover {
+            color: var(--complimentary-green);
+            font-size: 1.3rem;
+          }
         }
       }
     }
