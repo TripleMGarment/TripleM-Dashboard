@@ -15,4 +15,8 @@ export class ToastrConstants {
     firebaseError: 'Unable to connect with firebase',
     fileUpload: 'Unable to Upload the Image to Store'
   }
+
+  public static toastrWarningMessage = {
+    authRequired: 'Access Denied, Login is Required to Access the Page!'
+  }
 }
