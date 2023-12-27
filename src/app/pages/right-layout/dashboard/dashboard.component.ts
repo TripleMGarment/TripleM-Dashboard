@@ -20,8 +20,6 @@ export class DashboardComponent implements OnInit {
     this.showSpinner = true;
     this.partiesList = await this.getDocuments('Parties');
     this.ordersList = await this.getDocuments('Orders');
-    console.log(this.partiesList);
-    console.log(this.ordersList);
 
     this.topBar = [
       {
@@ -49,7 +47,6 @@ export class DashboardComponent implements OnInit {
       })
       this.dashboardList.push(PartiesOrder);
     })
-    console.log(this.dashboardList);
     this.showSpinner = false;
   }
 
@@ -59,7 +56,6 @@ export class DashboardComponent implements OnInit {
   }
 
   navigateToOrders(dataFromDasboard: any) {
-    console.log(dataFromDasboard);
     this._router.navigate(['orders', dataFromDasboard.party.id])
   }
 }

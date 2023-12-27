@@ -23,6 +23,7 @@
       <div class="header-column1">Party Name</div>
       <div class="header-column2">Address</div>
       <div class="header-column3">GST Number</div>
+      <div class="header-column4"></div>
     </div>
   </div>
   <div class="flex justify-center width">
@@ -42,6 +43,17 @@
             </div>
             <div class="field-column3 style-normal fw-500 text-m">
               {{ party['GST'] }}
+            </div>
+            <div class="flex field-column4">
+<!--              <nb-icon nbPrefix icon="edit-2-outline" pack="eva" [options]="{ animation: { type: 'shake' }}" class="pointer"></nb-icon>-->
+              <nb-icon
+                nbPrefix
+                icon="trash-2-outline"
+                pack="eva"
+                [options]="{ animation: { type: 'shake' }}"
+                class="pointer"
+                (click)="deleteDocument(party)"
+              ></nb-icon>
             </div>
           </div>
         </div>

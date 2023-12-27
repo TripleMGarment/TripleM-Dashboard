@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {Firestore} from '@angular/fire/firestore';
-import {addDoc, collection, getDocs, query, where} from 'firebase/firestore';
+import {addDoc, collection, getDocs, query, where, deleteDoc, doc} from 'firebase/firestore';
 import {getDownloadURL, ref, Storage, uploadBytesResumable} from "@angular/fire/storage";
 import {ToastrService} from "../toastr/toastr.service";
 import {ToastrConstants} from "../../constants/toastr-constants";
@@ -22,6 +22,13 @@ export class FirebaseCrudService {
     }
   }
 
+  async deleteDocument(collectionName: string,key: any, data: any) {
+    const q = query(collection(this.firestore, collectionName), where(key, "==", data));
+    (await getDocs(q)).forEach((document) => {
+      deleteDoc(doc(this.firestore, collectionName, document.id))
+    });
+  }
+
   async getDocuments(collectionName: string) {
     return await getDocs(collection(this.firestore, collectionName));
   }
@@ -31,14 +38,12 @@ export class FirebaseCrudService {
     const q = query(collection(this.firestore, collectionName), where(key, "==", value));
     (await getDocs(q)).forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
       document.push(doc.data());
     });
     return document;
   }
 
   async pushFileToStorage(image: File, fileName: string) {
-    console.log(image);
     const storageRef = ref(this.storage, fileName);
     try {
       // Upload the file

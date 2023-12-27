@@ -5,6 +5,7 @@ import { Storage, ref, uploadBytesResumable } from '@angular/fire/storage';
 import {GlobalService} from "../../../services/global.service";
 import {ToastrService} from "../../../services/toastr/toastr.service";
 import {ToastrConstants} from "../../../constants/toastr-constants";
+import {Guid} from "guid-typescript";
 
 @Component({
   selector: 'app-neworder',
@@ -30,13 +31,11 @@ export class NeworderComponent implements OnInit{
       partyName: new FormControl("")
     });
     this.newOrderForm.valueChanges.subscribe( data => {
-      console.log(this.newOrderForm.value);
     })
   }
 
   addOrder() {
     this.showSpinner = true;
-    console.log(this.newOrderForm);
     var fileName, formatedDate: string | undefined;
     if (this.newOrderForm.valid) {
       this.partiesList.forEach((party) => {
@@ -49,12 +48,12 @@ export class NeworderComponent implements OnInit{
       fileName = 'orders/' + fileName + '-' + formatedDate;
       const url = this.firebase.pushFileToStorage(this.orderImage, fileName);
       url.then(imageURL => {
-        console.log(imageURL)
         var data = {
           'Order detail': this.newOrderForm.get('orderDetail')?.value,
           Date: formatedDate,
           ImageURL: imageURL,
-          PartyId: this.newOrderForm.get('partyName')?.value
+          PartyId: this.newOrderForm.get('partyName')?.value,
+          id: Guid.create()['value']
         }
         this.firebase.createDocument('Orders',data);
         this.toastrService.showSuccessToast(ToastrConstants.toastrSuccessMessage.newOrder);
@@ -77,6 +76,5 @@ export class NeworderComponent implements OnInit{
   async getDocuments() {
     var data = this.firebase.getDocuments('Parties');
     this.partiesList = (await data).docs.map(doc => doc.data());
-    console.log(this.partiesList);
   }
 }

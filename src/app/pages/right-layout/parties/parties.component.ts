@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FirebaseCrudService} from "../../../services/firebase-crud/firebase-crud.service";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import { ImageConstants } from '../../../constants/image-constants';
+import {ToastrService} from "../../../services/toastr/toastr.service";
+import {ToastrConstants} from "../../../constants/toastr-constants";
 
 @Component({
   selector: 'app-parties',
@@ -16,7 +18,7 @@ export class PartiesComponent implements OnInit {
   protected readonly ImageConstants = ImageConstants;
   showSpinner: boolean = false;
 
-  constructor(private firebase: FirebaseCrudService, private fb: FormBuilder) {
+  constructor(private firebase: FirebaseCrudService, private fb: FormBuilder, private toastrService: ToastrService) {
     this.searchParty = this.fb.group({
       searchValue: new FormControl("")
     });
@@ -35,13 +37,31 @@ export class PartiesComponent implements OnInit {
   async getDocuments() {
     var data = this.firebase.getDocuments('Parties');
     this.partiesList = (await data).docs.map(doc => doc.data());
-    console.log(data);
     (await data).forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       // console.log(doc.id, " => ", doc.data());
     });
     this.list = this.partiesList;
     this.showSpinner = false;
+  }
+
+  deleteDocument(data: any) {
+    const orderList = this.firebase.getDocumentById('Orders', 'PartyId', data.id);
+    orderList.then((value) => {
+      if (value.length === 0) {
+        this.firebase.deleteDocument('Parties','id', data.id)
+          .then(() => {
+            this.toastrService.showSuccessToast(ToastrConstants.toastrSuccessMessage.partyDelete);
+            this.showSpinner = true;
+            this.getDocuments();
+          })
+          .catch((error) => {
+            this.toastrService.showDangerToast(ToastrConstants.toastrFailureMessage.partyDelete);
+          });
+      } else {
+        this.toastrService.showWarningToast(ToastrConstants.toastrWarningMessage.partyDelete);
+      }
+    })
   }
 
   searchPartyList(data: { [x: string]: any; }) {

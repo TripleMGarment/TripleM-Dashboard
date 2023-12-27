@@ -5,6 +5,8 @@ import {OrderDetailComponent} from "../../../components/order-detail/order-detai
 import {FirebaseCrudService} from "../../../services/firebase-crud/firebase-crud.service";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
+import {ToastrConstants} from "../../../constants/toastr-constants";
+import {ToastrService} from "../../../services/toastr/toastr.service";
 
 @Component({
   selector: 'app-orders',
@@ -20,7 +22,12 @@ export class OrdersComponent implements OnInit {
   showSpinner: boolean = false;
   partyIdFromRoute: string | undefined;
 
-  constructor(private dialogService: NbDialogService, private firebase: FirebaseCrudService, private fb: FormBuilder, private route: ActivatedRoute) {
+  constructor(private dialogService: NbDialogService,
+              private firebase: FirebaseCrudService,
+              private fb: FormBuilder,
+              private route: ActivatedRoute,
+              private toastrService: ToastrService
+  ) {
     this.searchOrder = this.fb.group({
       searchValue: new FormControl("")
     });
@@ -56,6 +63,18 @@ export class OrdersComponent implements OnInit {
     })
     this.list = this.ordersList;
     this.showSpinner = false;
+  }
+
+  deleteDocument(data: any) {
+    this.firebase.deleteDocument('Orders','id', data.id)
+      .then(() => {
+        this.toastrService.showSuccessToast(ToastrConstants.toastrSuccessMessage.orderDelete);
+      })
+      .catch((error) => {
+        this.toastrService.showDangerToast(ToastrConstants.toastrFailureMessage.orderDelete);
+      });
+    this.showSpinner = true;
+    this.getDocuments();
   }
 
   getDocumentsById(routeId: string) {
