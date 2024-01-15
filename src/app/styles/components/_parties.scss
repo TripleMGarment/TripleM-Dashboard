@@ -22,6 +22,41 @@
     }
   }
 
+  .top-button-import {
+    input[type='file']::-webkit-file-upload-button {
+      visibility: hidden;
+    }
+
+    input[type='file']::before {
+      content: 'Upload Excel';
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    input {
+      width: 150px;
+    }
+
+    .nb-form-field-addon-basic {
+      color: var(--complimentary-green);
+    }
+
+    .nb-form-field-addon-basic-highlight {
+      color: var(--complimentary-green);
+    }
+
+    [nbInput].status-basic {
+      border-color: var(--complimentary-green);
+      color: var(--complimentary-green);
+    }
+
+    [nbInput].status-basic::placeholder {
+      color: var(--complimentary-green);
+    }
+
+    margin-right: 10px;
+  }
+
   .dashboard-table-header {
 
     .header {
