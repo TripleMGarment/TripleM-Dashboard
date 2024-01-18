@@ -6,6 +6,22 @@
         <input type="text" placeholder="Search" nbInput formControlName="searchValue">
       </nb-form-field>
     </div>
+    <div class="top-button-import">
+      <nb-form-field class="width pointer">
+        <nb-icon nbPrefix icon="file-add-outline" pack="eva"></nb-icon>
+        <input
+          type="file"
+          fieldSize="small"
+          nbInput
+          placeholder="Excel"
+          class="width pointer"
+          required
+          accept=".xlsx"
+          id="file-input"
+          (change)="handleImport($event)"
+        >
+      </nb-form-field>
+    </div>
     <div class="top-button">
       <button
         nbButton

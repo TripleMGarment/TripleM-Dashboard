@@ -28,7 +28,8 @@ export class NeworderComponent implements OnInit{
       orderDetail: new FormControl(""),
       orderDate: new FormControl(""),
       image: new FormControl(""),
-      partyName: new FormControl("")
+      partyName: new FormControl(""),
+      orderDescription: new FormControl("")
     });
     this.newOrderForm.valueChanges.subscribe( data => {
     })
@@ -50,6 +51,7 @@ export class NeworderComponent implements OnInit{
       url.then(imageURL => {
         var data = {
           'Order detail': this.newOrderForm.get('orderDetail')?.value,
+          'Order description': this.newOrderForm.get('orderDescription')?.value,
           Date: formatedDate,
           ImageURL: imageURL,
           PartyId: this.newOrderForm.get('partyName')?.value,

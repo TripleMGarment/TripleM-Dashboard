@@ -4,6 +4,8 @@ import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import { ImageConstants } from '../../../constants/image-constants';
 import {ToastrService} from "../../../services/toastr/toastr.service";
 import {ToastrConstants} from "../../../constants/toastr-constants";
+import { read, utils } from 'xlsx';
+import {Guid} from "guid-typescript";
 
 @Component({
   selector: 'app-parties',
@@ -74,6 +76,35 @@ export class PartiesComponent implements OnInit {
     })
     if (this.partiesList.length === 0) {
       this.searchNotFound = true;
+    }
+  }
+
+  handleImport($event: any) {
+    const files = $event.target.files;
+    if (files.length) {
+      const file = files[0];
+      const reader = new FileReader();
+      reader.onload = (event: any) => {
+        const wb = read(event.target.result);
+        const sheets = wb.SheetNames;
+
+        if (sheets.length) {
+          const rows = utils.sheet_to_json(wb.Sheets[sheets[0]]);
+
+          rows.forEach((party: any) => {
+            var data = {
+              Name: party.Name,
+              Address: party.Address,
+              GST: party['GST Number'],
+              id: Guid.create()['value']
+            }
+            this.firebase.createDocument('Parties',data);
+            this.toastrService.showSuccessToast(ToastrConstants.toastrSuccessMessage.newParty);
+          })
+        }
+      }
+      reader.readAsArrayBuffer(file);
+      this.getDocuments();
     }
   }
 }

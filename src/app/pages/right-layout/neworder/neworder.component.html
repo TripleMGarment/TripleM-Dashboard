@@ -6,6 +6,13 @@
   <div class="flex flex-col party-form width">
     <form class="width" [formGroup]="newOrderForm" [nbSpinner]="showSpinner" nbSpinnerSize="giant">
       <div class="party-fields">
+        <div class="fw-600">Order Description</div>
+        <nb-form-field class="width">
+          <nb-icon nbPrefix icon="shopping-bag-outline" pack="eva"></nb-icon>
+          <input type="text" fieldSize="giant" fullWidth nbInput placeholder="Order Description" formControlName="orderDescription" required>
+        </nb-form-field>
+      </div>
+      <div class="party-fields">
         <div class="fw-600">Order Detail</div>
         <nb-form-field class="width">
           <nb-icon nbPrefix icon="shopping-bag-outline" pack="eva"></nb-icon>
