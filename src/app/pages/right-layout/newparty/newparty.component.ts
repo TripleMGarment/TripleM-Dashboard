@@ -20,6 +20,7 @@ export class NewpartyComponent implements OnInit {
     this.newPartyForm = this.fb.group({
       partyName: new FormControl(""),
       partyAddress: new FormControl(""),
+      phoneNumber: new FormControl(""),
       partyGst: new FormControl(""),
     });
   }
@@ -29,6 +30,7 @@ export class NewpartyComponent implements OnInit {
       var data = {
         Name: this.newPartyForm?.get('partyName')?.value,
         Address: this.newPartyForm?.get('partyAddress')?.value,
+        PhoneNo: this.newPartyForm?.get('phoneNumber')?.value,
         GST: this.newPartyForm?.get('partyGst')?.value,
         id: Guid.create()['value']
       }

@@ -93,9 +93,10 @@ export class PartiesComponent implements OnInit {
 
           rows.forEach((party: any) => {
             var data = {
-              Name: party.Name,
-              Address: party.Address,
-              GST: party['GST Number'],
+              Name: party.Name === undefined ? '-' : party.Name,
+              Address: party.Address === undefined ? '-' : party.Address,
+              PhoneNo: party['Phone Number'] === undefined ? '-' : party['Phone Number'],
+              GST: party['GST Number'] === undefined ? '-' : party['GST Number'],
               id: Guid.create()['value']
             }
             this.firebase.createDocument('Parties',data);

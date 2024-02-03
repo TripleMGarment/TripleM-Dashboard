@@ -38,6 +38,7 @@
       class="header flex justify-around align-item-center text-center border-radius-input style-normal fw-500">
       <div class="header-column1">Party Name</div>
       <div class="header-column2">Address</div>
+      <div class="header-column3">Phone Number</div>
       <div class="header-column3">GST Number</div>
       <div class="header-column4"></div>
     </div>
@@ -56,6 +57,9 @@
             </div>
             <div class="field-column2 flex justify-center style-normal fw-500">
               <div class="text-m">{{ party['Address'] }}</div>
+            </div>
+            <div class="field-column3 flex justify-center style-normal fw-500">
+              <div class="text-m">{{ party['PhoneNo'] }}</div>
             </div>
             <div class="field-column3 style-normal fw-500 text-m">
               {{ party['GST'] }}
