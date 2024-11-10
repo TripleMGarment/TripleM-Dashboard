@@ -13,6 +13,10 @@ import {OrderDetailComponent} from "../../components/order-detail/order-detail.c
 import {NeworderComponent} from "../../pages/right-layout/neworder/neworder.component";
 import {SignupComponent} from "../../pages/signup/signup.component";
 import {SigninComponent} from "../../pages/signin/signin.component";
+import { StockManagementComponent } from 'src/app/pages/right-layout/stock-management/stock-management.component';
+import { StockQuantityComponent } from 'src/app/components/stock-quantity/stock-quantity.component';
+import { StockTableComponent } from 'src/app/components/stock-table/stock-table.component';
+import { NbTreeGridModule } from '@nebular/theme';
 
 const modules = [
   HeaderComponent,
@@ -24,7 +28,10 @@ const modules = [
   OrderDetailComponent,
   NeworderComponent,
   SignupComponent,
-  SigninComponent
+  SigninComponent,
+  StockManagementComponent,
+  StockQuantityComponent,
+  StockTableComponent
 ]
 
 @NgModule({
@@ -35,7 +42,8 @@ const modules = [
     CommonModule,
     NebularModule,
     RouterLink,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NbTreeGridModule,
   ],
   exports: [
     ...modules

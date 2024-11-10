@@ -1,6 +1,7 @@
 import {Component, OnChanges} from '@angular/core';
 import {NbMenuItem, NbMenuService} from "@nebular/theme";
 import {AuthenticationService} from "../../services/authentication/authentication.service";
+import { ImageConstants } from 'src/app/constants/image-constants';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,6 +12,7 @@ export class SidebarComponent{
 
   constructor(private authenticationService: AuthenticationService, private menuService: NbMenuService) {
   }
+  protected readonly ImageConstants = ImageConstants;
   items: NbMenuItem[] = [
     {
       title: 'Dashboard',
@@ -26,6 +28,11 @@ export class SidebarComponent{
       title: 'Orders',
       icon: { icon: 'shopping-bag-outline', pack: 'eva' },
       link: 'orders'
+    },
+    {
+      title: 'Stock Management',
+      icon: { icon: 'book-open-outline', pack: 'eva' },
+      link: 'stock-management'
     },
     {
       title: 'Logout',

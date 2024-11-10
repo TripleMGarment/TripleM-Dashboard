@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {Firestore} from '@angular/fire/firestore';
-import {addDoc, collection, getDocs, query, where, deleteDoc, doc} from 'firebase/firestore';
+import {addDoc, collection, getDocs, query, where, deleteDoc, doc, updateDoc} from 'firebase/firestore';
 import {getDownloadURL, ref, Storage, uploadBytesResumable} from "@angular/fire/storage";
 import {ToastrService} from "../toastr/toastr.service";
 import {ToastrConstants} from "../../constants/toastr-constants";
@@ -26,6 +26,16 @@ export class FirebaseCrudService {
     const q = query(collection(this.firestore, collectionName), where(key, "==", data));
     (await getDocs(q)).forEach((document) => {
       deleteDoc(doc(this.firestore, collectionName, document.id))
+    });
+  }
+
+  async updateDocument() {
+    const q = query(collection(this.firestore, 'Sample'));
+    (await getDocs(q)).forEach((document) => {
+      const documentRef = doc(this.firestore, 'Sample', document.id);
+      updateDoc(documentRef, {
+        testing: [{v1: 50, v2: 50}, {v1: 30, v2: 70}]
+      })
     });
   }
 
