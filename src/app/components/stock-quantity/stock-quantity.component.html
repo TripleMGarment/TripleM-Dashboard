@@ -1,0 +1,55 @@
+<nb-card class="stock-quantity">
+    <nb-card-body>
+      <div class="dialog-close border-radius-input pointer" (click)="onClose()">
+        <div class="close-cross">X</div>
+      </div>
+      <div class="add-new">
+        <div class="flex title text-lg fw-600">
+            <div class="title-text">Add New Product</div>
+        </div>
+        <div class="flex flex-col party-form width">
+            <form class="width">
+                <div class="flex width add-new">
+                    <div class="party-fields gap">
+                        <div class="fw-600">Category</div>
+                        <nb-form-field class="width">
+                          <input type="text" fieldSize="giant" fullWidth nbInput placeholder="Category" formControlName="orderDescription" required>
+                        </nb-form-field>
+                      </div>
+                      <div class="party-fields">
+                        <div class="fw-600">Product</div>
+                        <nb-form-field class="width">
+                          <input type="text" fieldSize="giant" fullWidth nbInput placeholder="Product" formControlName="orderDetail" required>
+                        </nb-form-field>
+                      </div>
+                </div>
+                <div class="flex width add-new">
+                    <div class="party-fields gap">
+                        <div class="fw-600">Size</div>
+                        <nb-form-field class="width">
+                            <nb-select placeholder="Items" formControlName="item" class="gap width" size="giant">
+                                <nb-option>
+                                    hello
+                                </nb-option>
+                            </nb-select>
+                        </nb-form-field>
+                      </div>
+                      <div class="party-fields">
+                        <div class="fw-600">Quantity</div>
+                        <nb-form-field class="width">
+                          <input type="text" fieldSize="giant" fullWidth nbInput placeholder="Quantity" formControlName="orderDetail" required>
+                        </nb-form-field>
+                      </div>
+                </div>
+            </form>
+          </div>
+    </div>
+    <div class="flex flex-col justify-end align-items-end relative">
+        <div class="buttons">
+          <button nbButton status="basic" outline class="transform-none text-base gap" [routerLink]="'/orders'">Cancel</button>
+          <button nbButton status="basic" class="transform-none text-base">Save</button>
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+  

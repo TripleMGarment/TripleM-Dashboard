@@ -1,0 +1,56 @@
+<div class="stock">
+    <div class="flex align-items-end justify-end">
+      <div class="top-search">
+        <nb-form-field [formGroup]="search">
+            <div class="flex align-items-end justify-end">
+                <nb-select placeholder="Items" formControlName="item" class="gap">
+                    <nb-option value={{item}} *ngFor="let item of itemsDropdown">
+                        {{item}}
+                    </nb-option>
+                </nb-select>
+                <nb-select placeholder="Category" formControlName="category" class="gap">
+                    <nb-option value="{{category}}" *ngFor="let category of categoryDropdown">
+                        {{category}}
+                    </nb-option>
+                </nb-select>
+                <nb-select placeholder="Product" formControlName="product" class="gap">
+                    <nb-option value="{{product}}" *ngFor="let product of productDropdown">
+                        {{product}}
+                    </nb-option>
+                </nb-select>
+            </div>
+        </nb-form-field>
+      </div>
+      <div class="top-button">
+        <!-- <button
+          nbButton
+          class="transform-none text-base"
+          status="basic"
+          size="medium"
+          shape="semi-round"
+          [routerLink]="'/new-order'"
+        ><nb-icon icon="search-outline"></nb-icon>Search</button> -->
+      </div>
+    </div>
+    <!-- <div class="top-button product-button flex align-items-end justify-end gap">
+        <button
+          nbButton
+          class="transform-none text-base"
+          status="basic"
+          size="medium"
+          shape="semi-round"
+          (click)="openQuantityDialog()"
+        >Add Quantity</button>
+    </div> -->
+    <div class="stock-table" *ngIf="stockTableData">
+      <div *ngFor="let item of stockTableData | keyvalue" class="stock-table-container">
+        <div class="stock-table-header">
+          <h3 class="stock-table-title text-lg">{{ item.key }}</h3>
+        </div>
+        <app-stock-table 
+          [stockDetails]="item.value"
+          class="stock-table-content">
+        </app-stock-table>
+      </div>
+    </div>
+  </div>

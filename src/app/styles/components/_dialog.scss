@@ -42,3 +42,85 @@
     }
   }
 }
+
+.stock-quantity {
+  padding: 17px;
+  width: 700px;
+  height: 700px;
+
+  .dialog-close {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    float: right;
+    background: rgba(51, 51, 51, 0.25);
+    margin-right: -20px;
+
+    .close-cross {
+      margin-top: 6px;
+      color: var(--white);
+    }
+  }
+
+  .buttons {
+    margin-top: 50px;
+
+    [nbButton].appearance-outline.status-basic, .appearance-outline.status-basic[nbButtonToggle] {
+      border: 1.5px solid var(--sidebar-background);
+      color: var(--dark-highlight);
+    }
+
+    [nbButton].appearance-filled.status-basic, .appearance-filled.status-basic[nbButtonToggle] {
+      background-color: var(--complimentary-green);
+      color: var(--header-background);
+    }
+  }
+
+  .gap {
+    margin-right: 20px;
+  }
+
+  .add-new {
+    margin-top: 20px;
+    height: 80%;
+}
+
+  .party-fields {
+    width: 50%;
+    margin-top: 30px;
+
+    div {
+      margin-bottom: 5px;
+    }
+
+    .nb-form-field-addon-basic {
+      color: var(--dark-highlight);
+    }
+
+    .nb-form-field-addon-basic-highlight {
+      color: var(--dark-highlight);
+    }
+
+    [nbInput].status-basic {
+      background-color: var(--blush)!important;
+      border-color: var(--sidebar-background);
+      color: var(--dark-highlight);
+    }
+
+    [nbInput].status-basic::placeholder {
+      color: var(--dark-highlight);
+    }
+
+    nb-select.appearance-outline.status-basic .select-button {
+        color: var(--dark-highlight);
+        background-color: var(--blush);
+    }
+
+    nb-select.appearance-outline.size-giant .select-button {
+        width: 100%;
+        background-color: var(--blush);
+        border-color: var(--sidebar-background);
+        color: var(--dark-highlight);
+      }
+  }
+}

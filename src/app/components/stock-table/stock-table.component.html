@@ -1,0 +1,20 @@
+<div class="flex width">
+  <div class="width-50 table-title text-base">Size</div>
+  <div class="width-50 table-title text-base">Quantity</div>
+</div>
+<table [nbTreeGrid]="data">
+    <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+    <ng-container [nbTreeGridColumnDef]="customColumn">
+      <td nbTreeGridCell *nbTreeGridCellDef="let row">
+
+        {{row.data.size}}
+
+      </td>
+    </ng-container>
+
+    <ng-container *ngFor="let column of defaultColumns" [nbTreeGridColumnDef]="column">
+      <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column]}}</td>
+    </ng-container>
+
+  </table>

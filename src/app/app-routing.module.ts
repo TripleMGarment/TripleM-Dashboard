@@ -8,6 +8,7 @@ import {NeworderComponent} from "./pages/right-layout/neworder/neworder.componen
 import {SignupComponent} from "./pages/signup/signup.component";
 import {SigninComponent} from "./pages/signin/signin.component";
 import {AuthGuard} from "./services/authentication/guard/auth.guard";
+import { StockManagementComponent } from './pages/right-layout/stock-management/stock-management.component';
 
 const routes: Routes = [
   {
@@ -72,6 +73,14 @@ const routes: Routes = [
   {
     path: 'new-order',
     component: NeworderComponent,
+    data: {
+      showSidebar: true,
+    },
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'stock-management',
+    component: StockManagementComponent,
     data: {
       showSidebar: true,
     },
