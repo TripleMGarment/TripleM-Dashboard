@@ -14,7 +14,28 @@
     </ng-container>
 
     <ng-container *ngFor="let column of defaultColumns" [nbTreeGridColumnDef]="column">
-      <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column]}}</td>
+      <td nbTreeGridCell *nbTreeGridCellDef="let row">
+        <div class="flex justify-space-between">
+          <div *ngIf="column === 'quantity' && editingRow === row.data">
+            <!-- Editable Textbox -->
+            <button (click)="decrementQuantity(row.data, 10)" class="quantity-update-buttons pointer">-10</button>
+            <button (click)="decrementQuantity(row.data, 5)" class="quantity-update-buttons pointer">-5</button>
+            <button (click)="decrementQuantity(row.data, 1)" class="quantity-update-buttons pointer">-1</button>
+            {{ row.data[column] }}
+            <button (click)="incrementQuantity(row.data, 1)" class="quantity-update-buttons pointer">+1</button>
+            <button (click)="incrementQuantity(row.data, 5)" class="quantity-update-buttons pointer">+5</button>
+            <button (click)="incrementQuantity(row.data, 10)" class="quantity-update-buttons pointer">+10</button>
+            <button (click)="handleTick()" class="quantity-tick pointer"><nb-icon icon="checkmark-outline"></nb-icon></button>
+          </div>
+          <div *ngIf="!(column === 'quantity' && editingRow === row.data)">
+            <!-- Non-editable Text -->
+            {{ row.data[column] }}
+          </div>
+          <div class="pointer" (click)="openQuantityDialog(row.data)">
+            <nb-icon icon="edit-outline"></nb-icon>
+          </div>
+        </div>
+      </td>
     </ng-container>
 
   </table>

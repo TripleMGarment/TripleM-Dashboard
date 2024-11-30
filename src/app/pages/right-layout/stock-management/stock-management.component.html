@@ -1,4 +1,4 @@
-<div class="stock">
+<div class="stock" [nbSpinner]="showSpinner" nbSpinnerSize="giant">
     <div class="flex align-items-end justify-end">
       <div class="top-search">
         <nb-form-field [formGroup]="search">
@@ -21,27 +21,7 @@
             </div>
         </nb-form-field>
       </div>
-      <div class="top-button">
-        <!-- <button
-          nbButton
-          class="transform-none text-base"
-          status="basic"
-          size="medium"
-          shape="semi-round"
-          [routerLink]="'/new-order'"
-        ><nb-icon icon="search-outline"></nb-icon>Search</button> -->
-      </div>
     </div>
-    <!-- <div class="top-button product-button flex align-items-end justify-end gap">
-        <button
-          nbButton
-          class="transform-none text-base"
-          status="basic"
-          size="medium"
-          shape="semi-round"
-          (click)="openQuantityDialog()"
-        >Add Quantity</button>
-    </div> -->
     <div class="stock-table" *ngIf="stockTableData">
       <div *ngFor="let item of stockTableData | keyvalue" class="stock-table-container">
         <div class="stock-table-header">
@@ -49,6 +29,9 @@
         </div>
         <app-stock-table 
           [stockDetails]="item.value"
+          [item]="itemValue()"
+          [category]="categoryValue()"
+          [product]="item.key"
           class="stock-table-content">
         </app-stock-table>
       </div>

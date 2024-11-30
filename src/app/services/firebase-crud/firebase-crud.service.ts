@@ -29,14 +29,9 @@ export class FirebaseCrudService {
     });
   }
 
-  async updateDocument() {
-    const q = query(collection(this.firestore, 'Sample'));
-    (await getDocs(q)).forEach((document) => {
-      const documentRef = doc(this.firestore, 'Sample', document.id);
-      updateDoc(documentRef, {
-        testing: [{v1: 50, v2: 50}, {v1: 30, v2: 70}]
-      })
-    });
+  async updateDocument(collection: string, document: string, data: any) {
+    const documentRef = doc(this.firestore, collection, document);
+    updateDoc(documentRef, data);
   }
 
   async getDocuments(collectionName: string) {
