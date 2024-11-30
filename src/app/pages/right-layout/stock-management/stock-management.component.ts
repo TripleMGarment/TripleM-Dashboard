@@ -71,19 +71,23 @@ export class StockManagementComponent implements OnInit {
   }
 
   async getStockItems() {
+    this.showSpinner = true;
     var items = this.firebase.getDocuments('Stock-Items');
     (await items).forEach((doc) => {
       this.itemsDropdown = doc.data()['Items'];
+      this.showSpinner = false;
     });
   }
 
   async getDocuments(item: string) {
+    this.showSpinner = true;
     var data = this.firebase.getDocuments(item);
     (await data).forEach((doc) => {
       this.uniforms.push({
         id: doc.id,
         ...doc.data()
       });
+      this.showSpinner = false;
     });
     this.categoryDropdown = this.uniforms.map(item => item.id);
     this.categoryWithProduct = this.uniforms.map(item => {
@@ -123,5 +127,13 @@ export class StockManagementComponent implements OnInit {
     this.dialogService
       .open(StockQuantityComponent, {
       })
+  }
+
+  itemValue() {
+    return this.search.get('item')?.value;
+  }
+
+  categoryValue() {
+    return this.search.get('category')?.value;
   }
 }

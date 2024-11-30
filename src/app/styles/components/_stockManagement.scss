@@ -40,6 +40,21 @@
             color: var(--dark-highlight);
             margin-bottom: 5px;
         }
+
+        .quantity-tick {
+            background-color: var(--complimentary-green);
+            color: var(--white);
+            border: 1px solid var(--complimentary-green);
+            border-radius: 3px;
+        }
+
+        .quantity-update-buttons {
+            background-color: var(--blush);
+            border: 1px solid var(--blush);
+            padding: 1px 5px;
+            border-radius: 3px;
+            margin-right: 3px;
+        }
     }
 }
 
